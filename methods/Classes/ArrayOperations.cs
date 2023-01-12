@@ -334,7 +334,7 @@ public class ArrayOperations
         {
             for (int j = 0; j < array.GetLength(1); j++)
             {
-                array[i,j] = random.Next(1, 100);
+                array[i,j] = random.Next(0, 10);
             }
         }
 
@@ -401,5 +401,60 @@ public class ArrayOperations
         }
         Console.WriteLine("Наименьшее значение = "+ temp);
     }
+    
+
+    public void PrintSummOfOddElementsOfDoubleArray(int[,] arr)
+    {
+        int summOfOdd = 0;
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                if (arr[i,j] % 2 != 0)
+                {
+                    summOfOdd += arr[i, j];
+                }
+            }
+        }
+        Console.WriteLine("Сумма нечётных значений массива = "+ summOfOdd);
+    }
+    public void PrintSummOfEvenElementsOfDoubleArray(int[,] arr)
+    {
+        int summOfEven = 0;
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                if (arr[i,j] % 2 == 0)
+                {
+                    summOfEven += arr[i, j];
+                }
+            }
+        }
+        Console.WriteLine("Сумма четных значений массива = "+ summOfEven);
+    }
+    
+    public void PrintDifferenceOfSummEvenAndOddAtDoubleArray(int[,] arr)
+    {
+        int summOfOdd = 0;
+        int summOfEven = 0;
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                if (arr[i,j] % 2 != 0)
+                {
+                    summOfOdd += arr[i, j];
+                }
+                if (arr[i,j] % 2 == 0)
+                {
+                    summOfEven += arr[i, j];
+                }
+            }
+        }
+        Console.WriteLine("Разность между суммой чётных и нечетных значений = "+ (summOfEven - summOfOdd));
+    }
+
+
 
 }

@@ -109,6 +109,9 @@ arrays.PrintDoubleArray(doubleArrayRandom);
 arrays.PrintBiggestNeightborOfDoubleArray(doubleArrayRandom);
 arrays.PrintMaxValueOfDoubleArray(doubleArrayRandom);
 arrays.PrintMinValueOfDoubleArray(doubleArrayRandom);
+arrays.PrintSummOfOddElementsOfDoubleArray(doubleArrayRandom);
+arrays.PrintSummOfEvenElementsOfDoubleArray(doubleArrayRandom);
+arrays.PrintDifferenceOfSummEvenAndOddAtDoubleArray(doubleArrayRandom);
 
 
 
