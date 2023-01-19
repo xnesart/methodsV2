@@ -2,459 +2,478 @@ namespace methods.Classes;
 
 public class ArrayOperations
 {
+    /// <summary>
+    /// Проверяет массив, если он пустой - выдает ошибку
+    /// </summary>
+    /// <param name="array"></param>
+    /// <exception cref="Exception"></exception>
+    public void CheckArrayEmpty(int[] array)
+    {
+        if (array.Length == 0) throw new Exception("вы ввели пустой массив");
+    }
+
+    /// <summary>
+    /// Находим наибольшее число в массиве
+    /// </summary>
+    /// <param name="array"></param>
+    /// <returns>max</returns>
     public int ArrayMax(int[] array)
     {
-        //Находим наибольшее число в массиве
-        int max = array[0];
+        CheckArrayEmpty(array);
+        var max = array[0];
 
-        for (int i = 0; i < array.Length; i++)
-        {
+        for (var i = 0; i < array.Length; i++)
             if (max < array[i])
-            {
                 max = array[i];
-            }
-        }
         return max;
     }
+
+    /// <summary>
+    /// Находим наименьшее число в массиве
+    /// </summary>
+    /// <param name="array"></param>
+    /// <returns>min</returns>
     public int ArrayMin(int[] array)
     {
-        int min = array[0];
-        for (int i = 0; i < array.Length; i++)
-        {
+        CheckArrayEmpty(array);
+
+        var min = array[0];
+        for (var i = 0; i < array.Length; i++)
             if (min > array[i])
-            {
                 min = array[i];
-            }
-        }
         return min;
     }
+
+    /// <summary>
+    /// находим индекс минимального числа в массиве
+    /// </summary>
+    /// <param name="array"></param>
+    /// <returns>minIndex</returns>
     public int ArrayMinIndex(int[] array)
     {
-        int min = array[0];
-        int minIndex = 0;
-        for (int i = 0; i < array.Length; i++)
-        {
-            if (min > array[i])
-            {
-                min = array[i];
+        CheckArrayEmpty(array);
+
+        if (array.Length - 1 < 0) throw new Exception("вы ввели пустой массив");
+        var minIndex = 0;
+        for (var i = 0; i < array.Length; i++)
+            if (array[0] > array[i])
                 minIndex = i;
-            }
-        }
+
         return minIndex;
     }
+
+    /// <summary>
+    ///Находим индекс у самого большого числа массива
+    /// </summary>
+    /// <param name="array"></param>
+    /// <returns></returns>
     public int ArrayMaxIndex(int[] array)
     {
-        //Находим индекс у самого большого числа массива
-        int max = array[0];
-        int maxIndex = 0;
-        for (int i = 0; i < array.Length; i++)
-        {
-            if (max < array[i])
-            {
-                max = array[i];
+        CheckArrayEmpty(array);
+
+        if (array.Length - 1 < 0) throw new Exception("вы ввели пустой массив");
+        var maxIndex = 0;
+        for (var i = 0; i < array.Length; i++)
+            if (array[0] < array[i])
                 maxIndex = i;
-            }
-        }
         return maxIndex;
     }
-    
+
+    /// <summary>
+    ///Сделать реверс массива (массив в обратном направлении)
+    /// </summary>
+    /// <param name="array"></param>
+    /// <returns></returns>
     public int[] ArrayReverse(int[] array)
     {
-        //Сделать реверс массива (массив в обратном направлении)
-        int[] arrayReverse = new int[array.Length];
-        int temp = array.Length - 1;
-        for (int i = array.Length - 1; i >= 0; i--)
-        {
-            arrayReverse[temp] = array[i];
-            temp--;
-        }
+        CheckArrayEmpty(array);
+
+        var arrayReverse = new int[array.Length];
+        for (var i = array.Length - 1; i >= 0; i--) arrayReverse[array.Length - 1 - i] = array[i];
+
         return arrayReverse;
     }
+
+    /// <summary>
+    /// Сортировка массива по возрастанию методом пузырька
+    /// </summary>
+    /// <param name="array"></param>
+    /// <returns>array</returns>
     public int[] ArraySortToMaxBubble(int[] array)
     {
-        //Сортировка массива по возрастанию методом пузырька
+        CheckArrayEmpty(array);
 
-
-        // int[] array = new int[] { 3, 8, 1, 5,11 };
-        int temp = 0;
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            for (int k = i + 1; k < array.Length; k++)
+        int temp;
+        for (var i = 0; i < array.Length; i++)
+        for (var k = i + 1; k < array.Length; k++)
+            if (array[i] > array[k])
             {
-                if (array[i] > array[k])
-                {
-                    temp = array[k];
-                    array[k] = array[i];
-                    array[i] = temp;
-
-                }
-
+                temp = array[k];
+                array[k] = array[i];
+                array[i] = temp;
             }
-            // Console.WriteLine(array[i]);
-        }
 
         return array;
-        Console.ReadLine();
     }
-    
+
+    /// <summary>
+    /// Сортировка массива по убыванию методом пузырька
+    /// </summary>
+    /// <param name="array"></param>
+    /// <returns>array</returns>
     public int[] ArraySortToMinBubble(int[] array)
     {
-        //Сортировка массива по убыванию методом пузырька
+        CheckArrayEmpty(array);
 
+        int temp;
 
-        // int[] array = new int[] { 10, 11, 5, 23, 12 };
-        int temp = 0;
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            for (int k = i + 1; k < array.Length; k++)
+        for (var i = 0; i < array.Length; i++)
+        for (var k = i + 1; k < array.Length; k++)
+            if (array[i] < array[k])
             {
-                if (array[i] < array[k])
-                {
-                    temp = array[k];
-                    array[k] = array[i];
-                    array[i] = temp;
-                }
-
+                temp = array[k];
+                array[k] = array[i];
+                array[i] = temp;
             }
-            // Console.WriteLine(array[i]);
-        }
 
         return array;
-        Console.ReadLine();
     }
-    
-    public int ArrayFindSummOfOdd(int[] array)
+
+    /// <summary>
+    ///Посчитать количество нечетных элементов массива
+    /// </summary>
+    /// <param name="array"></param>
+    /// <returns>counter</returns>
+    public int ArrayFindSumOfOddElements(int[] array)
     {
-        //Посчитать количество нечетных элементов массива
-        int counter = 0;
-        for (int i = 0; i < array.Length; i++)
-        {
+        CheckArrayEmpty(array);
+
+        var counter = 0;
+        for (var i = 0; i < array.Length; i++)
             if (array[i] % 2 != 0)
-            {
                 counter++;
-            }
-        }
+
         return counter;
     }
-    
-    public int ArraySummOfOddIndexNumbers(int[] array)
+
+    /// <summary>
+    /// Посчитать сумму элементов массива с нечетными индексами
+    /// </summary>
+    /// <param name="array"></param>
+    /// <returns>odd</returns>
+    public int ArraySumOfOddIndexNumbers(int[] array)
     {
-        //Посчитать сумму элементов массива с нечетными индексами
-        int odd = 0;
-        for (int i = 0; i < array.Length; i++)
-        {
+        CheckArrayEmpty(array);
+
+        var odd = 0;
+        for (var i = 0; i < array.Length; i++)
             if (i % 2 != 0)
-            {
                 odd += array[i];
-            }
-        }
         return odd;
     }
-    
-    public int[] CreateArrRandomNumbers()
+
+    /// <summary>
+    /// заполняем массив случайными числами, количество элеметнов передается при вызове
+    /// </summary>
+    /// <returns>array2</returns>
+    public int[] CreateArrRandomNumbers(int count)
     {
-        //заполняем массив случайными числами
-
-        // int[] array = new int[10];
-        // for (int i = 0; i < array.Length; i++)
-        // {
-        //     array[i] = i * i;
-        //     Console.Write(array[i] + " ");
-        // }
-        // Console.ReadLine();
-        //
-        //заполняем массив случайными числами методом Random
-
-        Random random = new Random();
-        int[] array2 = new int[10];
-        for (int i = 0; i < array2.Length; i++)
+        if (count == 0)
         {
-            array2[i] = random.Next(0, 100);
-            // Console.Write(array2[i] + " ");
+            throw new Exception("введенное значение равно нулю, ошибка");
         }
+        var random = new Random();
+        var array2 = new int[count];
+        for (var i = 0; i < array2.Length; i++) array2[i] = random.Next(0, 100);
 
         return array2;
     }
-    public string Compare(int userEnterA, int userEnterB)
+
+    /// <summary>
+    /// Пользователь вводит 2 числа, проверить, есть ли одинаковые цифры.
+    /// </summary>
+    /// <param name="userEnterA"></param>
+    /// <param name="userEnterB"></param>
+    /// <returns>yes</returns>
+    public string CompareIdenticalSymbolsOfValues(int userEnterA, int userEnterB)
     {
-        string userEnterStringA = userEnterA.ToString();
-        string userEnterStringB = userEnterB.ToString();
-        // Пользователь вводит 2 числа, проверить, есть ли одинаковые числа.
-        string yes = "да";
-        string no = "нет";
+        var userEnterStringA = userEnterA.ToString();
+        var userEnterStringB = userEnterB.ToString();
+        var result = false;
+        string answer;
         char c;
         char d;
-        for (int i = 0; i != userEnterStringA.Length; i++)
+        for (var i = 0; i != userEnterStringA.Length; i++)
         {
             c = userEnterStringA[i];
 
-            for (int j = 0; j != userEnterStringB.Length; j++)
+            for (var j = 0; j != userEnterStringB.Length; j++)
             {
                 d = userEnterStringB[j];
                 if (c == d)
                 {
-                    return yes;
-                }
-                else
-                {
-                    return no;
+                    result = true;
+                    break;  
                 }
             }
-            // for (int j = 0; j != userEnterB.Length; j++)
-            // {
-            //     d = userEnterB[j];
-            //     if (c != d)
-            //     {
-            //         Console.WriteLine("да");
-            //         return no;
-            //     }
-            // }
         }
 
-        return yes;
+        if (result == true)
+            answer = "да";
+        else
+            answer = "нет";
+
+        return answer;
     }
 
-    public int[,] DoubleArrayTranspositionOnSecondaryDiagonal(int a, int b)
+    /// <summary>
+    /// Отразить матрицу по второстепенной диагонали
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public int[,] TranspositionOnSecondaryDiagonalOfDoubleArray(int a, int b)
     {
-        
-        if (a <= 0 || b <= 0)
+        if (a <= 0 || b <= 0) throw new Exception("Вы ввели отрицательный или нулевой размер массива, ошибка");
+
+        var array = new int[a, b];
+        for (var i = array.GetLength(0) - 1; i >= 0; i--)
+        for (var j = array.GetLength(1) - 1; j >= 0; j--)
         {
-            throw new Exception("Вы ввели отрицательный или нулевой размер массива, ошибка");
+            Console.Write("Количество строк, Y: " + (i + 1) + " Количество столбцов, X: " + (j + 1) + "  = ");
+            array[i, j] = int.Parse(Console.ReadLine());
         }
-        
-        int[,] array = new int[a, b];
-        for (int i = array.GetLength(0)-1; i >= 0 ; i--)
+
+        for (var i = 0; i < array.GetLength(0); i++)
         {
-            for (int j = array.GetLength(1)-1; j >= 0 ; j--)
+            for (var j = 0; j < array.GetLength(1); j++) Console.Write($"{array[i, j]} ");
+            Console.WriteLine();
+        }
+
+        return array;
+    }
+
+    /// <summary>
+    /// Отразить матрицу по главной диагонали
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public int[,] TranspositionOnMainDiagonalOfDoubleArray(int a, int b)
+    {
+        if (a <= 0 || b <= 0) throw new Exception("Вы ввели отрицательный или нулевой размер массива, ошибка");
+
+        var array = new int[a, b];
+        for (var i = 0; i < array.GetLength(0); i++)
+        {
+            for (var j = 0; j < array.GetLength(1); j++)
             {
-                Console.Write("Количество строк, Y: " + (i + 1) + " Количество столбцов, X: " + (j + 1)+ "  = "  );
+                Console.Write("Количество строк, Y: " + (i + 1) + " Количество столбцов, X: " + (j + 1) + " ");
                 array[i, j] = int.Parse(Console.ReadLine());
             }
-        }
-        
-        for (int i = 0; i < array.GetLength(0) ; i++)
-        {
-            for (int j = 0; j < array.GetLength(1) ; j++)
-            {
-                Console.Write($"{array[i, j]} ");
-            }
+
             Console.WriteLine();
         }
+
+        for (var i = 0; i < array.GetLength(0); i++)
+        {
+            for (var j = 0; j < array.GetLength(1); j++) Console.Write($"{array[i, j]} ");
+            Console.WriteLine();
+        }
+
         return array;
-
     }
-    
-    public int[,] DoubleArrayTranspositionOnMainDiagonal(int a, int b)
-    {
-        
-        if (a <= 0 || b <= 0)
-        {
-            throw new Exception("Вы ввели отрицательный или нулевой размер массива, ошибка");
-        }
-        
-        int[,] array = new int[a, b];
-        for (int i = 0; i < array.GetLength(0); i++)
-        {
-            for (int j = 0; j < array.GetLength(1); j++)
-            {
-                Console.Write("Количество строк, Y: " + (i + 1) + " Количество столбцов, X: " + (j + 1)+ " " );
-                array[i, j] = int.Parse(Console.ReadLine());
-            }
-            Console.WriteLine();
 
-        }
-        
-        for (int i = 0; i < array.GetLength(0) ; i++)
-        {
-            for (int j = 0; j < array.GetLength(1) ; j++)
-            {
-                Console.Write($"{array[i, j]} ");
-            }
-            Console.WriteLine();
-        }
-        return array;
-
-    }
-    
+    /// <summary>
+    /// Сортировка двойного массива по возрастанию
+    /// </summary>
+    /// <returns></returns>
     public int[,] DoubleArraySortToMax()
     {
-        
-        
-        int[,] array = new int[,]
+        var array = new int[,]
         {
-            {212,111,323},
-            {4243,123,535}
+            { 212, 111, 323 },
+            { 4243, 123, 535 }
         };
-        int tmp = 0;
-        for (int i = 0; i < array.GetLength(0); i++)
+        var tmp = 0;
+        for (var i = 0; i < array.GetLength(0); i++)
         {
-            for (int j = 0; j < array.GetLength(1); j++)
+            for (var j = 0; j < array.GetLength(1); j++)
+            for (var k = j + 1; k < array.GetLength(1); k++)
             {
-                for (int k = j + 1; k < array.GetLength(1); k++)
+                if (array[i, j] > array[i, k])
                 {
-                    
-                    if (array[i,j] > array[i,k])
-                    {
-                        array[i, k] = tmp;
-                        array[i, k] = array[i, j];
-                        array[i, j] = tmp;
-                    }
-                
-                    Console.Write($"{array[i, i]} ");
+                    array[i, k] = tmp;
+                    array[i, k] = array[i, j];
+                    array[i, j] = tmp;
                 }
 
+                Console.Write($"{array[i, i]} ");
             }
-            Console.WriteLine();
 
+            Console.WriteLine();
         }
-        
-        for (int i = 0; i < array.GetLength(0) ; i++)
+
+        for (var i = 0; i < array.GetLength(0); i++)
         {
-            for (int j = 0; j < array.GetLength(1) ; j++)
-            {
-                Console.Write($"{array[i, j]} ");
-            }
+            for (var j = 0; j < array.GetLength(1); j++) Console.Write($"{array[i, j]} ");
             Console.WriteLine();
         }
-        return array;
 
+        return array;
     }
-    
+
+    /// <summary>
+    /// Создает двумерный массив, заполнеят случайными числами
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
     public int[,] CreateDoubleArrWithRandomNumbers(int a, int b)
     {
-
-        
-        //заполняем массив случайными числами методом Random
-
-        Random random = new Random();
-        int[,] array = new int[a,b];
-        for (int i = 0; i < array.GetLength(0); i++)
-        {
-            for (int j = 0; j < array.GetLength(1); j++)
-            {
-                array[i,j] = random.Next(0, 10);
-            }
-        }
+        var random = new Random();
+        var array = new int[a, b];
+        for (var i = 0; i < array.GetLength(0); i++)
+        for (var j = 0; j < array.GetLength(1); j++)
+            array[i, j] = random.Next(0, 10);
 
         return array;
     }
+
+    /// <summary>
+    /// Выводит в консоль двойной массив
+    /// </summary>
+    /// <param name="arr"></param>
     public void PrintDoubleArray(int[,] arr)
     {
-        for (int i = 0; i < arr.GetLength(0); i++)
+        for (var i = 0; i < arr.GetLength(0); i++)
         {
-            for (int j = 0; j < arr.GetLength(1); j++)
-            {
-                Console.Write(arr[i,j]+ " ");
-            }
+            for (var j = 0; j < arr.GetLength(1); j++) Console.Write(arr[i, j] + " ");
             Console.WriteLine();
         }
     }
 
+    /// <summary>
+    /// Ищет наибольшего соседа среди чисел в массиве.
+    /// </summary>
+    /// <param name="arr"></param>
     public void PrintBiggestNeightborOfDoubleArray(int[,] arr)
     {
-        for (int i = 0; i < arr.GetLength(0); i++)
-        {
-            for (int j = 0; j < arr.GetLength(1); j++)
+        for (var i = 0; i < arr.GetLength(0); i++)
+        for (var j = 0; j < arr.GetLength(1); j++)
+            if ((i == 0 || arr[i, j] > arr[i - 1, j])
+                && (i >= arr.GetLength(0) - 1 || arr[i, j] > arr[i + 1, j])
+                && (j == 0 || arr[i, j] > arr[i, j - 1])
+                && (j >= arr.GetLength(1) - 1 || arr[i, j] > arr[i, j + 1]))
             {
-                if ((i == 0 || arr[i, j] > arr[i - 1, j]) 
-                    && (i >= arr.GetLength(0)-1 || arr[i, j] > arr[i+1,j]) 
-                    && (j == 0 || arr[i, j] > arr[i,j-1])  
-                    && (j >= arr.GetLength(1)-1 || arr[i, j] > arr[i,j+1]) )
-                {
-                    Console.Write("Наибольший элемент = " + arr[i,j] + ". С координатами i:" + (i + 1) + ", j:" + (j + 1)+ ";");
-                    Console.WriteLine();
-                }
+                Console.Write("Наибольший элемент = " + arr[i, j] + ". С координатами i:" + (i + 1) + ", j:" + (j + 1) +
+                              ";");
+                Console.WriteLine();
             }
-        }
     }
-    
+
+    /// <summary>
+    /// Выводит наибольшее число в двумерном массиве
+    /// </summary>
+    /// <param name="arr"></param>
     public void PrintMaxValueOfDoubleArray(int[,] arr)
     {
-        int temp = 0;
-        for (int i = 0; i < arr.GetLength(0); i++)
-        {
-            for (int j = 0; j < arr.GetLength(1); j++)
-            {
-                if (temp < arr[i, j])
-                {
-                    temp = arr[i, j];
-                }
-            }
-        }
-        Console.WriteLine("Наибольшее значение = "+ temp);
+        var temp = 0;
+        for (var i = 0; i < arr.GetLength(0); i++)
+        for (var j = 0; j < arr.GetLength(1); j++)
+            if (temp < arr[i, j])
+                temp = arr[i, j];
+        Console.WriteLine("Наибольшее значение = " + temp);
     }
-    
+
+    /// <summary>
+    /// Выводит в консоль наименьшее число в двойном массиве
+    /// </summary>
+    /// <param name="arr"></param>
     public void PrintMinValueOfDoubleArray(int[,] arr)
     {
-        int temp = arr[0,0];
-        for (int i = 0; i < arr.GetLength(0); i++)
+        var temp = arr[0, 0];
+        for (var i = 0; i < arr.GetLength(0); i++)
+        for (var j = 0; j < arr.GetLength(1); j++)
+            if (temp > arr[i, j])
+                temp = arr[i, j];
+        Console.WriteLine("Наименьшее значение = " + temp);
+    }
+
+    /// <summary>
+    /// Выводит сумму нечётных элементов двойного массива в консоль
+    /// </summary>
+    /// <param name="arr"></param>
+    public void PrintSumOfOddElementsOfDoubleArray(int[,] arr)
+    {
+        var sumOfOdd = 0;
+        for (var i = 0; i < arr.GetLength(0); i++)
+        for (var j = 0; j < arr.GetLength(1); j++)
+            if (arr[i, j] % 2 != 0)
+                sumOfOdd += arr[i, j];
+        Console.WriteLine("Сумма нечётных значений массива = " + sumOfOdd);
+    }
+
+    /// <summary>
+    /// Выводит сумму чётных элементов двойного массива в консоль
+    /// </summary>
+    /// <param name="arr"></param>
+    public void PrintSumOfEvenElementsOfDoubleArray(int[,] arr)
+    {
+        var sumOfEven = 0;
+        for (var i = 0; i < arr.GetLength(0); i++)
+        for (var j = 0; j < arr.GetLength(1); j++)
+            if (arr[i, j] % 2 == 0)
+                sumOfEven += arr[i, j];
+        Console.WriteLine("Сумма четных значений массива = " + sumOfEven);
+    }
+
+    /// <summary>
+    /// Выводит разность между суммой чётных и нечетных значений
+    /// </summary>
+    /// <param name="arr"></param>
+    public void PrintDifferenceOfSumEvenAndOddAtDoubleArray(int[,] arr)
+    {
+        var sumOfOdd = 0;
+        var sumOfEven = 0;
+        for (var i = 0; i < arr.GetLength(0); i++)
+        for (var j = 0; j < arr.GetLength(1); j++)
         {
-            for (int j = 0; j < arr.GetLength(1); j++)
-            {
-                if (temp > arr[i, j])
-                {
-                    temp = arr[i, j];
-                }
-            }
+            if (arr[i, j] % 2 != 0) sumOfOdd += arr[i, j];
+            if (arr[i, j] % 2 == 0) sumOfEven += arr[i, j];
         }
-        Console.WriteLine("Наименьшее значение = "+ temp);
+
+        Console.WriteLine("Разность между суммой чётных и нечетных значений = " + (sumOfEven - sumOfOdd));
+    }
+
+    /// <summary>
+    /// Складывает значения строки/столбца и выводит в консоль
+    /// </summary>
+    /// <param name="arr"></param>
+    public void PrintCountOfLineAndColumnOfDoubleArray(int[,] arr)
+    {
+        var countOfLine = 0;
+        var countOfColumn = 0;
+
+        for (var i = 0; i < arr.GetLength(0); i++)
+        {
+            for (var j = 0; j < arr.GetLength(1); j++)
+            {
+                countOfLine += arr[i, j];
+                countOfColumn += arr[j, i];
+            }
+
+            Console.WriteLine("сумма строки №" + i + 1 + " = " + countOfLine);
+            Console.WriteLine("сумма столбца №" + i + 1 + " = " + countOfColumn);
+
+            countOfLine = 0;
+            countOfColumn = 0;
+        }
     }
     
-
-    public void PrintSummOfOddElementsOfDoubleArray(int[,] arr)
-    {
-        int summOfOdd = 0;
-        for (int i = 0; i < arr.GetLength(0); i++)
-        {
-            for (int j = 0; j < arr.GetLength(1); j++)
-            {
-                if (arr[i,j] % 2 != 0)
-                {
-                    summOfOdd += arr[i, j];
-                }
-            }
-        }
-        Console.WriteLine("Сумма нечётных значений массива = "+ summOfOdd);
-    }
-    public void PrintSummOfEvenElementsOfDoubleArray(int[,] arr)
-    {
-        int summOfEven = 0;
-        for (int i = 0; i < arr.GetLength(0); i++)
-        {
-            for (int j = 0; j < arr.GetLength(1); j++)
-            {
-                if (arr[i,j] % 2 == 0)
-                {
-                    summOfEven += arr[i, j];
-                }
-            }
-        }
-        Console.WriteLine("Сумма четных значений массива = "+ summOfEven);
-    }
     
-    public void PrintDifferenceOfSummEvenAndOddAtDoubleArray(int[,] arr)
-    {
-        int summOfOdd = 0;
-        int summOfEven = 0;
-        for (int i = 0; i < arr.GetLength(0); i++)
-        {
-            for (int j = 0; j < arr.GetLength(1); j++)
-            {
-                if (arr[i,j] % 2 != 0)
-                {
-                    summOfOdd += arr[i, j];
-                }
-                if (arr[i,j] % 2 == 0)
-                {
-                    summOfEven += arr[i, j];
-                }
-            }
-        }
-        Console.WriteLine("Разность между суммой чётных и нечетных значений = "+ (summOfEven - summOfOdd));
-    }
-
-
+    
 
 }

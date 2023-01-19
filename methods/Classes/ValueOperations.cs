@@ -19,9 +19,17 @@ public class ValueOperations
 
     public int Evklid(int a, int b)
     {
+        
         //Найти наибольший общий делитель 2х чисел по алгоритму Евклида
         while (a != b)
         {
+            if (b == 0 && a == 0)
+            {
+                throw new Exception("Одно из чисел равно 0, ошибка");
+            }
+            {
+                
+            }
             if (a > b)
             {
                 a = a - b;
@@ -119,7 +127,7 @@ public class ValueOperations
     {
         //Пользователь вводит целое положитиельное число, которое является кубом целого числа N, найти N методом половинного деления
 
-        Console.WriteLine("введите число A");
+        // Console.WriteLine("введите число A");
         // int a = int.Parse(Console.ReadLine());
         int n = a * a * a;
         int leftBorder = 0;

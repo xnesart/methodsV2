@@ -2,6 +2,7 @@ namespace methods.Classes;
 
 public class Functions
 {
+
     public double HalfDivFunction(double y)
     {
         // y = 5*x+6; найти х
