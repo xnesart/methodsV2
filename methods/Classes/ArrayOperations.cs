@@ -55,10 +55,14 @@ public class ArrayOperations
 
         if (array.Length - 1 < 0) throw new Exception("вы ввели пустой массив");
         var minIndex = 0;
+        int temp = 0;
         for (var i = 0; i < array.Length; i++)
-            if (array[0] > array[i])
+            if (array[temp] > array[i])
+            {
                 minIndex = i;
-
+                temp++;
+            }
+                    
         return minIndex;
     }
 
@@ -73,9 +77,13 @@ public class ArrayOperations
 
         if (array.Length - 1 < 0) throw new Exception("вы ввели пустой массив");
         var maxIndex = 0;
+        int temp = 0;
         for (var i = 0; i < array.Length; i++)
-            if (array[0] < array[i])
+            if (array[temp] < array[i])
+            {
                 maxIndex = i;
+                temp++;
+            }
         return maxIndex;
     }
 
@@ -359,7 +367,7 @@ public class ArrayOperations
     /// Ищет наибольшего соседа среди чисел в массиве.
     /// </summary>
     /// <param name="arr"></param>
-    public void PrintBiggestNeightborOfDoubleArray(int[,] arr)
+    public void PrintBiggestNeighborsOfDoubleArray(int[,] arr)
     {
         for (var i = 0; i < arr.GetLength(0); i++)
         for (var j = 0; j < arr.GetLength(1); j++)
@@ -372,6 +380,27 @@ public class ArrayOperations
                               ";");
                 Console.WriteLine();
             }
+    }
+    
+    /// <summary>
+    /// Передает количество наибольших элементов среди соседей 
+    /// </summary>
+    /// <param name="arr"></param>
+    /// <returns>count</returns>
+    public int CountOfBiggestNeighborsOfDoubleArray(int[,] arr)
+    {
+        int count = 0;
+        for (var i = 0; i < arr.GetLength(0); i++)
+        for (var j = 0; j < arr.GetLength(1); j++)
+            if ((i == 0 || arr[i, j] > arr[i - 1, j])
+                && (i >= arr.GetLength(0) - 1 || arr[i, j] > arr[i + 1, j])
+                && (j == 0 || arr[i, j] > arr[i, j - 1])
+                && (j >= arr.GetLength(1) - 1 || arr[i, j] > arr[i, j + 1]))
+            {
+                count++;
+            }
+
+        return count;
     }
 
     /// <summary>
@@ -474,6 +503,24 @@ public class ArrayOperations
     }
     
     
-    
+    public void PrintSortingColumnsToMax(int[,] arr)
+    {
+        int temp = 0;
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                if ((i == 0 || arr[i, j] > arr[i - 1, j])
+                    && (i >= arr.GetLength(0) - 1 || arr[i, j] > arr[i + 1, j]))
+                {
+                        temp = arr[i + 1, j];
+                        arr[i + 1, j] = arr[i, j];
+                        arr[i, j] = temp;
+
+                }
+                Console.Write(arr[i,j]);
+            }
+        }
+    }
 
 }

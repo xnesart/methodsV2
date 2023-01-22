@@ -1,8 +1,11 @@
 ﻿using methods.Classes;
 
 ValueOperations operations = new ValueOperations();
-// int fibonachi = operations.FindFibonachi(20);
+// int fibonachi = operations.FindFibonachi(3);
 // Console.Write(fibonachi);
+
+// int evklid = operations.Evklid(12, 36);
+// Console.Write(evklid);
 
 // string g = operations.SumOddAndEven(30);
 // Console.Write(g);
@@ -10,27 +13,24 @@ ValueOperations operations = new ValueOperations();
 // int countOfOdd = operations.FindOddValuesOfNumber(0);
 // Console.WriteLine(countOfOdd);
 
-// int evklid = operations.Evklid(5, 7);
-// Console.Write(evklid);
-
-// int maxDiv = operations.FindMaxDivOfValue(100);
+// int maxDiv = operations.FindMaxDivOfValue(22);
 // Console.WriteLine(maxDiv);
 
-// int halfDiv = operations.HalfDivisionValue(4);
+// int halfDiv = operations.HalfDivisionValue(2);
 // Console.Write(halfDiv);
 
 // int revertVal = operations.RevertValue(420);
 // Console.Write(revertVal);
 
 // int[] revertValue = operations.RevertValue(new int[] { 0,0,0,5 });
-// int[] revertValue = operations.RevertValue(005);
+// int[] revertValue = operations.RevertValue(563);
 //
-// for (int i = revertValue.Length -1; i >= 0;i--)
+// for (int i = 0; i < revertValue.Length;i++)
 // {
 //     Console.Write(revertValue[i]);
 // }
 
-// int even = operations.SumEvenOrSumOdd(3679);
+// int even = operations.SumEvenOfValue(10);
 // Console.Write(even);
 
 Functions functions = new Functions();
@@ -51,7 +51,7 @@ ArrayOperations arrays = new ArrayOperations();
 // int minIndex = arrays.ArrayMinIndex(new int[] { 3, 8, 1, 5, 0 });
 // Console.WriteLine(minIndex);
 //
-// int maxIndex = arrays.ArrayMaxIndex(new int[] { 3, 8, 1, 5,11,35,67 });
+// int maxIndex = arrays.ArrayMaxIndex(new int[] { 3, 8,67, 1, 5,11,35 });
 // Console.WriteLine(maxIndex);
 
 // int[] arrayReverse = arrays.ArrayReverse(new int[] { 3, 8, 1, 5,11 });
@@ -91,9 +91,11 @@ ArrayOperations arrays = new ArrayOperations();
 
 // int[,] doubleArrayMax = arrays.DoubleArraySortToMax();
 
-int[,] doubleArrayRandom = arrays.CreateDoubleArrWithRandomNumbers(3, 3);
-arrays.PrintDoubleArray(doubleArrayRandom);
-// arrays.PrintBiggestNeightborOfDoubleArray(doubleArrayRandom);
+// int[,] doubleArrayRandom = arrays.CreateDoubleArrWithRandomNumbers(3, 3);
+// arrays.PrintDoubleArray(doubleArrayRandom);
+// arrays.PrintBiggestNeighborsOfDoubleArray(doubleArrayRandom);
+// int count = arrays.CountOfBiggestNeighborsOfDoubleArray(doubleArrayRandom);
+// Console.Write(count);
 // arrays.PrintMaxValueOfDoubleArray(doubleArrayRandom);
 // arrays.PrintMinValueOfDoubleArray(doubleArrayRandom);
 // arrays.PrintSumOfOddElementsOfDoubleArray(doubleArrayRandom);
