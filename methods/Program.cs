@@ -19,8 +19,11 @@ ValueOperations operations = new ValueOperations();
 // int halfDiv = operations.HalfDivisionValue(2);
 // Console.Write(halfDiv);
 
-// int revertVal = operations.RevertValue(420);
-// Console.Write(revertVal);
+// int[] revertVal = operations.RevertValue(420);
+// for (int i = 0; i < revertVal.Length; i++)
+// {
+//     Console.Write(revertVal[i]);
+// }
 
 // int[] revertValue = operations.RevertValue(new int[] { 0,0,0,5 });
 // int[] revertValue = operations.RevertValue(563);

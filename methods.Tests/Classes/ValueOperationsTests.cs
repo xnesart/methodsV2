@@ -11,8 +11,6 @@ public class TestsCaseValueOperations
     public void FindFibonachiTest(int n, int excepted)
     {
         ValueOperations operations = new ValueOperations();
-    
-    
         int actual = operations.FindFibonachi(n);
         Assert.AreEqual(excepted,actual);
     }
@@ -22,8 +20,6 @@ public class TestsCaseValueOperations
     public void EvklidTest(int a, int b, int excepted)
     {
         ValueOperations operations = new ValueOperations();
-
-
         int actual = operations.Evklid(a,b);
         Assert.AreEqual(excepted,actual);
     }
@@ -35,11 +31,9 @@ public class TestsCaseValueOperations
     public void FindOddValuesOfNumberTest(int userEnterValue, int excepted)
     {
         ValueOperations operations = new ValueOperations();
-
         int actual = operations.FindOddValuesOfNumber(userEnterValue);
         Assert.AreEqual(excepted,actual);
     }
-    
     
     [TestCase(100,50)]
     [TestCase(0,0)]
@@ -47,8 +41,6 @@ public class TestsCaseValueOperations
     public void FindMaxDivOfValueTest(int a, int excepted)
     {
         ValueOperations operations = new ValueOperations();
-
-
         int actual = operations.FindMaxDivOfValue(a);
         Assert.AreEqual(excepted,actual);
     }
@@ -59,18 +51,16 @@ public class TestsCaseValueOperations
     public void HalfDivisionValueTest(int a, int excepted)
     {
         ValueOperations operations = new ValueOperations();
-
-
         int actual = operations.HalfDivisionValue(a);
         Assert.AreEqual(excepted,actual);
     }
     
-    [TestCase(123,new int[]{321})]
-
+    [TestCase(123,new int[]{3,2,1})]
+    [TestCase(32354,new int[]{4,5,3,2,3})]
+    [TestCase(6059320,new int[]{0,2,3,9,5,0,6})]
     public void RevertValueTest(int value, int[] excepted)
     {
         ValueOperations operations = new ValueOperations();
-
         int[] actual = operations.RevertValue(value);
         Assert.AreEqual(excepted,actual);
     }
@@ -78,12 +68,9 @@ public class TestsCaseValueOperations
     [TestCase(10,5)]
     [TestCase(12,6)]
     [TestCase(21,10)]
-
-
     public void SumEvenOfValueTests(int a, int excepted)
     {
         ValueOperations operations = new ValueOperations();
-
         int actual = operations.SumEvenOfValue(a);
         Assert.AreEqual(excepted,actual);
     }

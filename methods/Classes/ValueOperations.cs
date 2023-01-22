@@ -218,10 +218,4 @@ public class ValueOperations
         
         return evenCount;
     }
-    
-
-
-
-
-
 }
